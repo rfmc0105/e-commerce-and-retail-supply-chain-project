@@ -140,15 +140,15 @@ BEGIN
                     -- Truncate the daily_inventory table
                     TRUNCATE TABLE bronze.daily_inventory;
 
-                -- Load data from CSV file into daily_inventory table
-                BULK INSERT bronze.daily_inventory
-                FROM 'D:\LocalDocs\KaggleData\datasets\rajhkumarr\e-commerce-and-retail-supply-chain\daily_inventory.csv'
-                WITH (
-                    FIRSTROW = 2,
-                    FIELDTERMINATOR = ',',
-                    ROWTERMINATOR = '0x0a',
-                    TABLOCK
-                );
+                    -- Load data from CSV file into daily_inventory table
+                    BULK INSERT bronze.daily_inventory
+                    FROM 'D:\LocalDocs\KaggleData\datasets\rajhkumarr\e-commerce-and-retail-supply-chain\daily_inventory.csv'
+                    WITH (
+                        FIRSTROW = 2,
+                        FIELDTERMINATOR = ',',
+                        ROWTERMINATOR = '0x0a',
+                        TABLOCK
+                    );
 
                 SET @endTime = GETDATE();
                     SET @duration = DATEDIFF(SECOND, @startTime, @endTime);
@@ -200,4 +200,5 @@ BEGIN
         THROW;
      END CATCH
 END;
+
  
